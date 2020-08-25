@@ -116,7 +116,8 @@ int extract_min()
 }
 
 //最短路径算法 
-void dijkstra()
+//void dijkstra()
+int dijkstra(int s, int t)
 {
 	insert(s);
 	dis[s] = 0;
@@ -125,7 +126,8 @@ void dijkstra()
 		int top = extract_min();
 		if(top == t) //若想知道全部所有源点到所有顶点的距离，删掉此if语句 
 			{
-				break;				
+				//break;
+				return dis[t];				
 			}
 		Edge *temp = first[top];
 		while(temp != NULL)
@@ -163,8 +165,10 @@ int main()
 	cin>>s>>t;
 
 	memset(dis, 127, sizeof(dis)); //数组中的所有元素全为2139062143(可视为INF)
-    dijkstra();
+    //dijkstra();
+    int result = dijkstra(s,t);
     cout<<"--------------------------------"<<endl; 
-	cout<<"从起点"<<s<<"到终点"<<t<<"的最短路径为"<<dis[t];
+	//cout<<"从起点"<<s<<"到终点"<<t<<"的最短路径为"<<dis[t];
+	cout<<"从起点"<<s<<"到终点"<<t<<"的最短路径为"<<result;
 	return 0;
 }
